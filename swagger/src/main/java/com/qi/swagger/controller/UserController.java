@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @author ：qixianchuan
  * @date ：Created in 2019-08-14 17:44
@@ -21,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(value = "/user")
-@Api(tags = "1.0.0-SNAPSHOT", description = "user manager", value = "user manager")
+@Api(tags = "user manager", description = "user manager", value = "user manager")
 public class UserController {
 
     private final Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -31,13 +33,31 @@ public class UserController {
 
 
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-    public ApiResponse<User> addUser(@RequestParam(value = "name", required = false) String name, @RequestParam(value = "name", required = false) String job) {
+    public ApiResponse addUser(@RequestParam(value = "name", required = false) String name, @RequestParam(value = "job", required = false) String job) {
         User user = new User();
-        user.setId(1);
         user.setName(name);
         user.setJob(job);
-        ApiResponse<User> userApiResponse = userService.insertUser(user);
-        return userApiResponse;
+        ApiResponse apiResponse = userService.insertUser(user);
+        return apiResponse;
     }
 
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public ApiResponse<List<User>> listUser() {
+        return userService.findAllUser();
+    }
+
+    @RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
+    public ApiResponse deleteUserById(@RequestParam(value = "id", required = true) Integer id) {
+        return userService.deleteUser(id);
+    }
+
+    @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
+    public ApiResponse updateUser(@RequestParam(value = "id", required = true) Integer id, @RequestParam(value = "name", required = false) String name, @RequestParam(value = "job", required = false) String job) {
+        User user = new User();
+        user.setId(id);
+        user.setName(name);
+        user.setJob(job);
+        ApiResponse apiResponse = userService.updateUser(user);
+        return apiResponse;
+    }
 }

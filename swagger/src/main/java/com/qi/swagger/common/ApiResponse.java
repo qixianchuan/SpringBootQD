@@ -40,6 +40,6 @@ public class ApiResponse<T> implements Serializable {
     /**
      * 通用返回数据
      */
-    @ApiModelProperty(value = "通用返回数据", required = true)
+    @ApiModelProperty(value = "通用返回数据", required = false)
     private T data;
 }

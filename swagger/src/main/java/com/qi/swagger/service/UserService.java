@@ -14,8 +14,11 @@ import java.util.List;
  */
 public interface UserService {
 
-    List<User> findAllUser();
+    ApiResponse<List<User>> findAllUser();
 
-    ApiResponse<User> insertUser(User user);
+    ApiResponse insertUser(User user);
 
+    ApiResponse updateUser(User user);
+
+    ApiResponse deleteUser(Integer id);
 }

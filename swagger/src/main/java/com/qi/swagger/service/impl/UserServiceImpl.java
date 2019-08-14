@@ -22,17 +22,39 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public List<User> findAllUser() {
-        return userDao.findAll();
+    public ApiResponse<List<User>> findAllUser() {
+        List<User> userList = userDao.findAll();
+        ApiResponse apiResponse = new ApiResponse();
+        apiResponse.setCode(200);
+        apiResponse.setMessage("select success");
+        apiResponse.setData(userList);
+        return apiResponse;
     }
 
     @Override
-    public ApiResponse<User> insertUser(User user) {
+    public ApiResponse insertUser(User user) {
         User user1 = userDao.save(user);
         ApiResponse apiResponse = new ApiResponse();
         apiResponse.setCode(200);
         apiResponse.setMessage("save success");
-        apiResponse.setData(user1);
+        return apiResponse;
+    }
+
+    @Override
+    public ApiResponse updateUser(User user) {
+        userDao.save(user);
+        ApiResponse apiResponse = new ApiResponse();
+        apiResponse.setCode(200);
+        apiResponse.setMessage("update success");
+        return apiResponse;
+    }
+
+    @Override
+    public ApiResponse deleteUser(Integer id) {
+        userDao.deleteById(id);
+        ApiResponse apiResponse = new ApiResponse();
+        apiResponse.setCode(200);
+        apiResponse.setMessage("delete success");
         return apiResponse;
     }
 }
