@@ -1,0 +1,21 @@
+package com.qi.swagger.service;
+
+import com.qi.swagger.common.ApiResponse;
+import com.qi.swagger.entity.User;
+
+import java.util.List;
+
+/**
+ * @author ：qixianchuan
+ * @date ：Created in 2019-08-14 17:27
+ * @description：${description}
+ * @modified By：
+ * @version: $version$
+ */
+public interface UserService {
+
+    List<User> findAllUser();
+
+    ApiResponse<User> insertUser(User user);
+
+}
