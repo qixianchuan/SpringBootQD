@@ -38,16 +38,19 @@ public class UserController {
         user.setName(name);
         user.setJob(job);
         ApiResponse apiResponse = userService.insertUser(user);
+        logger.info("用户新增");
         return apiResponse;
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ApiResponse<List<User>> listUser() {
+        logger.info("用户查询");
         return userService.findAllUser();
     }
 
     @RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
     public ApiResponse deleteUserById(@RequestParam(value = "id", required = true) Integer id) {
+        logger.info("用户删除");
         return userService.deleteUser(id);
     }
 
@@ -58,6 +61,7 @@ public class UserController {
         user.setName(name);
         user.setJob(job);
         ApiResponse apiResponse = userService.updateUser(user);
+        logger.info("用户修改");
         return apiResponse;
     }
 }
