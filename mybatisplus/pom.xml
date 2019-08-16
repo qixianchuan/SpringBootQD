@@ -8,11 +8,11 @@
 		<version>2.1.7.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.qi.redis</groupId>
-	<artifactId>redis</artifactId>
+	<groupId>com.qi.mybatisplus</groupId>
+	<artifactId>mybatisplus</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>redis</name>
-	<description>redis</description>
+	<name>mybatisplus</name>
+	<description>mybatisplus</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -22,11 +22,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>2.1.0</version>
 		</dependency>
 
 		<dependency>
@@ -44,10 +39,23 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-redis</artifactId>
-			<version>1.3.2.RELEASE</version>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+			<version>3.1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.ikidou</groupId>
+			<artifactId>TypeBuilder</artifactId>
+			<version>1.0</version>
 		</dependency>
 	</dependencies>
 
