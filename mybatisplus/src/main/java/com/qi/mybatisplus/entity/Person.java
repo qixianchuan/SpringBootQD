@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * @author ：qixianchuan
  * @date ：Created in 2019-08-16 9:28
- * @description：${description}
+ * @description：Person Entity
  * @modified By：
  * @version: $version$
  */

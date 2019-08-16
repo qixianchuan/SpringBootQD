@@ -1,4 +1,4 @@
-package com.qi.mybatisplus.config;
+package com.qi.scaffold.config;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
@@ -9,17 +9,18 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @author ：qixianchuan
- * @date ：Created in 2019-08-16 9:32
- * @description：MybatisPlus Configuration
+ * @date ：Created in 2019-08-16 14:21
+ * @description：mybatis plus Configuration
  * @modified By：
  * @version: $version$
  */
 @Configuration
-@MapperScan(basePackages = {"com.qi.mybatisplus.mapper"})
+@MapperScan(basePackages = {"com.qi.scaffold.test.mapper"})
 @EnableTransactionManagement
 public class MybatisPlusConfig {
     /**
      * 性能分析拦截器，不建议生产使用
+     * Performance analysis interceptor, not recommended for production use
      */
     @Bean
     public PerformanceInterceptor performanceInterceptor() {
@@ -28,6 +29,7 @@ public class MybatisPlusConfig {
 
     /**
      * 分页插件
+     * jPaginate
      */
     @Bean
     public PaginationInterceptor paginationInterceptor() {
