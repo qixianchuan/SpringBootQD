@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax upload</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/blueimp-file-upload/10.1.0/css/jquery.fileupload.css">
+</head>
+<body>
+
+    <!-- The file input field used as target for the file upload widget -->
+    <!--<form method="POST" action="/ajaxupload" enctype="multipart/form-data" class="form-horizontal">-->
+            <!--<span class="btn btn-success fileinput-button">-->
+              <!--<i class="glyphicon glyphicon-plus"></i>-->
+              <!--<span>Add files...</span>-->
+              <!--<input type="file" name="imgFile" />-->
+            <!--</span>-->
+            <!--<button type="submit" class="btn btn-primary start">-->
+              <!--<i class="glyphicon glyphicon-upload"></i>-->
+              <!--<span>Start upload</span>-->
+            <!--</button>-->
+    <!--</form>-->
+
+    <input id="fileupload" accept=".jpg,.jpeg,.png" type="file" name="imgFile" data-url="/ajaxupload" >
+<!-- The global progress bar -->
+<div id="progress" class="progress">
+    <div class="progress-bar progress-bar-success"></div>
+</div>
+<div class="imgView" hidden="hidden">
+    <img src="">
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/jquery.ui.widget.js"></script>
+<!--<script src="https://blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>-->
+<!--<script src="https://blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>-->
+<!--<script src="https://blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+<!--<script src="https://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>-->
+<!--<script src="js/jquery.iframe-transport.js"></script>-->
+<script src="/js/jquery.iframe-transport.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-file-upload/10.1.0/js/jquery.fileupload.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-file-upload/10.1.0/js/jquery.fileupload-process.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-file-upload/10.0.0/js/jquery.fileupload-image.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-file-upload/9.34.0/js/jquery.fileupload-audio.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-file-upload/9.34.0/js/jquery.fileupload-video.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-file-upload/9.33.0/js/jquery.fileupload-validate.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-file-upload/9.32.0/js/jquery.fileupload-ui.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.js"></script>
+<script>
+    $(function () {
+        $('#fileupload').fileupload({
+            done:function (e,data) {
+                console.log(data);
+                
+            }
+        });
+    });
+</script>
+</body>
+</html>

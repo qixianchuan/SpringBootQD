@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/blueimp-file-upload/10.1.0/css/jquery.fileupload.css">
+    <style>
+        .form-control {
+            font-size: 12px;
+            padding: 5px 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h3>文件上传</h3>
+        <form class="form-horizontal">
+            <div class="form-group" style="position: relative">
+                <label for="fileUpload" class="col-sm-2 control-label">请选择一个文件上传：</label>
+                <div class="col-sm-10">
+                    <input id="fileUpload" type="file" name="imgFile" class="form-control"/>
+                </div>
+                <!--安置一个隐藏的input标签 用来存储图片上传成功后的图片路径   以便提交表单时 一并提交  以后就能根据路径找到这个文件了-->
+                <input type="hidden" name="brandLogo">
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2" id="fileUpload_box">
+                    <!--<button class="btn btn-sm btn-primary">点击上传文件</button>-->
+                </div>
+            </div>
+
+            <div id="progress" class="progress">
+                <div class="progress-bar progress-bar-striped active progress-bar-success"></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 此盒子与插件功能无关 显示上传图片的预览 未上传时时默认图 一般为灰色底图  -->
+<div class="img_box">
+    <!--　　<img src="images/default.png" alt="" width="100" height="100">-->
+</div>
+
+<!--<div id="progress">-->
+<!--<div class="bar" style="width: 0%;"></div>-->
+<!--</div>-->
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<!--1. 基于jquery ui-->
+<script src="js/jquery.ui.widget.js"></script>
+<!--2. 遇见跨域-->
+<!--<script src="assets/jqueryFileupload/jquery.iframe-transport.js"></script>-->
+<!--3. 核心文件-->
+<script src="https://cdn.bootcss.com/blueimp-file-upload/10.1.0/js/jquery.fileupload.js"></script>
+<script>
+    $(function () {
+        /*上传文件*/
+        $('#fileUpload').fileupload({
+            url: '/ajaxupload',
+            autoUpload: false,
+            dataType: 'json',
+            add: function (e, data) {//点击按钮上传文件
+                $('#progress .progress-bar').css('width', 0 + '%');
+                data.context = $("<button class=\"btn btn-sm btn-primary\">点击上传文件</button>")
+                    .appendTo($("#fileUpload_box"))
+                    .click(function () {
+                        data.context = $('<samp class="message text-center" />').text('上传文件中...').replaceAll($(this));
+                        data.submit();
+                    });
+            },
+            always: function (e, data) {//成功，失败回调
+                console.log(data);
+                console.log("always");
+                $(".message").remove();
+            },
+            progressall: function (e, data) {//进度条
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('#progress .progress-bar').css(
+                    'width',
+                    progress + '%'
+                );
+                $('#progress .progress-bar').text(progress + '%');
+            }
+        });
+    });
+
+    // $('#file').fileupload({
+    //     //type: 文件上传HTTP请求方式，可以选择“POST”，“PUT”或者"PATCH",
+    //     type: 'POST',
+    //     //url：请求发送的目标url,默认为post方式
+    //     url: '/admin/qa/upload-file',
+    //     //dataType:希望从服务器返回的数据类型，默认"json"
+    //     dataType: 'json',
+    //     //formData:需要传输的参数，这里是静态的传输，如果需要动态的传输需要在add这个进程里面进行传输
+    //     formData: {id: 123},
+    //     //autoUpload:是否自动上传，即当文件放入file之后便自动上传，默认为true
+    //     autoUpload: false,
+    //     //acceptFileTypes：允许上传的的文件类型
+    //     acceptFileTypes: /(\.|\/)xlsx$/i,
+    //     //maxFileSize: 最大上传文件大小
+    //     maxFileSize: 1,
+    //     //minFileSize:最小上传文件大小,单位B
+    //     minFileSize: 1,
+    //     //previewMaxWidth : 图片预览区域最大宽度
+    //     //添加文件后触发
+    //     add: function (ev, data) {
+    //         currentFile = null;
+    //         $('#result-panel').html('');
+    //         var name = data.files[0].name;
+    //         if (/(\.|\/)xlsx$/i.test(name)) {
+    //             $('#xlsFileShow').html(name);
+    //             //data里面包含些方法，如果submit提交这个API，可以根据用户的需求进行提交
+    //             //如果需要动态的传参可以用data.formData=123，进行传输
+    //             currentFile = data;
+    //             //执行如果不符合的条件
+    //         } else {
+    //             //执行如果传入的文件名称不符合正则匹配的代码
+    //         }
+    //     },
+    //     //当一个单独的文件处理队列结束（完成或失败时）触发
+    //     progressalways: function (e, data) {
+    //     },
+    //     //全局上传处理事件的回调函数,即上传过程时触发
+    //     progressall: function (e, data) {
+    //         //进度条可以用data.loaded与data.total的比进行完成
+    //     },
+    //     //上传请求失败时触发的回调函数，如果服务器返回一个带有error属性的json响应这个函数将不会被触发
+    //     fail: function (e, data) {
+    //     },
+    //     // 上传请求成功时触发的回调函数，如果服务器返回一个带有error属性的json响应这个函数也会被触发
+    //     done: function (e, data) {
+    //     },
+    //     //上传请求结束时（成功，错误或者中止）都会被触发。
+    //     always: function (e, data) {
+    //     }
+    // })
+</script>
+
+</body>
+</html>
