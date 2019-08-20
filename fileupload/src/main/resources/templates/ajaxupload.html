@@ -2,7 +2,7 @@
 <html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
-    <title>文件上传</title>
+    <title>第二种ajax文件上传</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/blueimp-file-upload/10.1.0/css/jquery.fileupload.css">
     <style>
@@ -15,7 +15,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <h3>文件上传</h3>
+        <h3>第二种ajax文件上传</h3>
         <form class="form-horizontal">
             <div class="form-group" style="position: relative">
                 <label for="fileUpload" class="col-sm-2 control-label">请选择一个文件上传：</label>
@@ -30,7 +30,7 @@
                     <!--<button class="btn btn-sm btn-primary">点击上传文件</button>-->
                 </div>
             </div>
-
+            <!--上传进度条-->
             <div id="progress" class="progress">
                 <div class="progress-bar progress-bar-striped active progress-bar-success"></div>
             </div>
@@ -43,12 +43,8 @@
     <!--　　<img src="images/default.png" alt="" width="100" height="100">-->
 </div>
 
-<!--<div id="progress">-->
-<!--<div class="bar" style="width: 0%;"></div>-->
-<!--</div>-->
-
-
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<!--<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>-->
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <!--1. 基于jquery ui-->
 <script src="js/jquery.ui.widget.js"></script>
 <!--2. 遇见跨域-->
@@ -61,8 +57,27 @@
         $('#fileUpload').fileupload({
             url: '/ajaxupload',
             autoUpload: false,
-            dataType: 'json',
-            add: function (e, data) {//点击按钮上传文件
+            type: 'POST',
+            // dataType: 'json',
+            //添加文件后触发
+            add: function (e, data) {
+                var name = data.files[0].name;
+                console.log(name);
+                //根据文件的扩展名判断文件类型
+                //判断是否是excle文件
+                if (/(\.|\/)xlsx$/i.test(name)) {
+                    alert("您上传了excle文件");
+                }
+                if (/(\.|\/)zip$/i.test(name)) {
+                    alert("您上传了zip文件");
+                }
+                if (/(\.|\/)jpg$/i.test(name)) {
+                    alert("您上传了jpg图片文件");
+                }
+                if (/(\.|\/)png$/i.test(name)) {
+                    alert("您上传了png图片文件");
+                }
+                //点击按钮上传文件
                 $('#progress .progress-bar').css('width', 0 + '%');
                 data.context = $("<button class=\"btn btn-sm btn-primary\">点击上传文件</button>")
                     .appendTo($("#fileUpload_box"))
@@ -75,6 +90,7 @@
                 console.log(data);
                 console.log("always");
                 $(".message").remove();
+
             },
             progressall: function (e, data) {//进度条
                 var progress = parseInt(data.loaded / data.total * 100, 10);
@@ -83,6 +99,12 @@
                     progress + '%'
                 );
                 $('#progress .progress-bar').text(progress + '%');
+            },
+            done: function (e, data) {//成功 回调
+                console.log("done");
+                console.log(e);
+                console.log(data);
+                alert(data.result.result);
             }
         });
     });
