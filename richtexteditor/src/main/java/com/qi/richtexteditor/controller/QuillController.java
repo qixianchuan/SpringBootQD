@@ -7,18 +7,27 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author ：qixianchuan
  * @date ：Created in 2019-08-20 15:14
  * @description：参考
- * https://github.com/quilljs/quill
+ * github: https://github.com/quilljs/quill
+ * https://www.jianshu.com/p/b237372f15cc
  * @modified By：
  * @version: $version$
  */
 @Controller
 public class QuillController {
 
-    @GetMapping("/quill")
-    public String index() {
+    @GetMapping("/helloquill")
+    public String helloquill() {
         return "helloquill";
     }
 
+    @GetMapping("/quillformat")
+    public String quillformat() {
+        return "quillformat";
+    }
 
+    @GetMapping("/quillhtml")
+    public String quillhtml() {
+        return "quillhtml";
+    }
 
 }
