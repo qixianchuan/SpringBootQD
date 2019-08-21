@@ -1,4 +1,8 @@
 ### some spring-boot demo
+- spring-boot version 2.1.7.RELEASE
+#### war
+- 把项目打成war包
+- 更改spring-boot控制台默认启动图标，在resources中放入banner.txt文件
 
 #### mybatis
 
@@ -11,6 +15,8 @@
 #### druid
 
 #### swagger
+
+#### mongodb
 
 #### redis
 
@@ -33,7 +39,5 @@
     }
 
 ```
-
-
 
 -  https://www.jianshu.com/p/3efa9225d012 这篇文章解决上面的那块代码是干啥的
