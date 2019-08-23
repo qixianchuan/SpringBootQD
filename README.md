@@ -12,6 +12,8 @@
 
 #### jpa
 
+#### scheduler
+
 #### druid
 
 #### swagger

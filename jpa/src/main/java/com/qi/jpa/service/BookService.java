@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author ：qixianchuan
  * @date ：Created in 2019-08-14 14:01
- * @description：${description}
+ * @description：BookService
  * @modified By：
  * @version: $version$
  */

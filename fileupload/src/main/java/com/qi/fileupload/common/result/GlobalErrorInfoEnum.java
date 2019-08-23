@@ -3,7 +3,7 @@ package com.qi.fileupload.common.result;
 /**
  * @author ：qixianchuan
  * @date ：Created in 2019-08-16 16:34
- * @description：${description}
+ * @description：GlobalErrorInfoEnum
  * @modified By：
  * @version: $version$
  */

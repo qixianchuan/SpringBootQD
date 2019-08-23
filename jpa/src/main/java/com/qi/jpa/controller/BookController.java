@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,17 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+
+    @RequestMapping("/listbook")
+    public String list(Model model) {
+        List<Book> bookList = bookService.findAll();
+        model.addAttribute("books", bookList);
+        return "book/list";
+    }
+
+    /**
+     * json
+     **/
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public List<Book> getBookList() {

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * @author ：qixianchuan
  * @date ：Created in 2019-08-16 16:37
- * @description：统一错误码异常处理
+ * @description：统一错误码异常处理 GlobalErrorInfoHandler
  * @modified By：
  * @version: $version$
  */

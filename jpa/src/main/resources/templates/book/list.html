@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>booklist</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>name</th>
+                    <th>writer</th>
+                    <th>introduction</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="book : ${books}">
+                    <th scope="row" th:text="${book.id}">1</th>
+                    <td th:text="${book.name}">neo</td>
+                    <td th:text="${book.writer}">Otto</td>
+                    <td th:text="${book.introduction}">6</td>
+                    <td><a th:href="@{/toEdit(id=${book.id})}">edit</a></td>
+                    <td><a th:href="@{/delete(id=${book.id})}">delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">
+                    <a href="/toAdd" th:href="@{/toAdd}" class="btn btn-info">add</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

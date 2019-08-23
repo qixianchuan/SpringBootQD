@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * @author ：qixianchuan
  * @date ：Created in 2019-08-14 13:57
- * @description：${description}
+ * @description：Book entity
  * @modified By：
  * @version: $version$
  */

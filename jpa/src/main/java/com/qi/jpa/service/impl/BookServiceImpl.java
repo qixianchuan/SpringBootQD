@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @author ：qixianchuan
  * @date ：Created in 2019-08-14 14:03
- * @description：${description}
+ * @description：BookServiceImpl
  * @modified By：
  * @version: $version$
  */

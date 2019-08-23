@@ -5,7 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 /**
  * @author ：qixianchuan
  * @date ：Created in 2019-08-21 17:35
- * @description：${description}
+ * @description：UploadService
  * @modified By：
  * @version: $version$
  */

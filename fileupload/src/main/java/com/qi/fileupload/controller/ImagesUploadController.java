@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 /**
  * @author ：qixianchuan
  * @date ：Created in 2019-08-21 17:34
- * @description：${description}
+ * @description：ImagesUploadController
  * @modified By：
  * @version: $version$
  */
