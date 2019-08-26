@@ -26,6 +26,11 @@
 
 #### file upload
 
+- 1. http://localhost:8080/ 第一种：springmvc上传
+- 2. http://localhost:8080/ajax 第二种 ajax上传【前端基于jquery.fileupload 插件】
+- http://localhost:8080/imagesUploadPage  这个注意成功的话返回200状态码
+- 3. http://localhost:8080/formimage form表单 与 文件一起提交 【基于 jquery.from 插件】
+
 ```java
 //Tomcat large file upload connection reset
     @Bean

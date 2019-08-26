@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>formimage</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .form-control {
+            font-size: 12px;
+            padding: 5px 12px;
+        }
+        .mt20{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt20">
+            <!--如果没有设置enctype="multipart/form-data"，文件上传会报  The current request is not a multipart request-->
+            <form action="" id="regform" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <!--/formimageUpload-->
+                <!--...............表单和图片内容-->
+                <div class="form-group">
+                    <label for="fileUpload" class="col-sm-2 control-label">用户名：</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="username" class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="fileUpload" class="col-sm-2 control-label">密码：</label>
+                    <div class="col-sm-10">
+                        <input type="password" name="password" class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="fileUpload" class="col-sm-2 control-label">请选择一个文件上传：</label>
+                    <div class="col-sm-10">
+                        <input id="fileUpload" type="file" name="wizard-picture" class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-2" id="fileUpload_box">
+                        <!--<input type="submit" class="btn btn-sm btn-primary" value="点击上传文件"/>-->
+                        <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' value='提交'
+                               onclick="register()"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p id="returnStr">
+
+            </p>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery.form/4.2.2/jquery.form.min.js"></script>
+<script>
+    //注册
+    function register() {
+        // <--原始的ajax方式提交是失败的-->
+        //     <#--$.ajax({-->
+        //         <#--url:url,-->
+        //     <#--type:"POST",-->
+        //     <#--data:$("#regform").serialize(),-->
+        //     <#--success: function (message) {-->
+        //     <#--alert(message);-->
+        //     <#--}-->
+        //     <#--});-->
+
+        var options = {
+            // url:'${request.contextPath}/login/xx.html?random='+new Date().getTime(),
+            url: '/formimageUpload',
+            type: 'POST',
+            //beforeSubmit: showRequest, //提交前处理的函数，也可以在这里写,注意，这里接收的只能是false和true，且不能是函数的名带括号的
+            // dataType:'json', //返回的数据类型：null、"xml"、"script"、"json"其中之一。
+            //resetForm: true, 表示如果表单提交成功是否进行重置
+            clearForm: false, //表示如果表单提交成功是否清除表单数据。
+            success: function (msg) { //提交完后执行的函数
+                console.log(msg);
+                $("#returnStr").html(msg);
+                // if (msg.status == "error_1"){
+                //     alert("上传参数不完整");
+                // } else if (msg.status == "error_2"){
+                //     alert("书籍封面未上传");
+                // } else if (msg.status == "error_3"){
+                //     alert("书籍未上传");
+                // } else if (msg.status == "error_4"){
+                //     alert("图片格式有误，请重新上传");
+                // } else if (msg.status == "error_5"){
+                //     alert("图片文件太大，最多上传2M");
+                // } else if (msg.status == "error_6"){
+                //     alert("书本格式有误，只能是txt与pdf格式。");
+                // } else if (msg.status == "error_7"){
+                //     alert("书籍太大，最多上传20M");
+                // } else if (msg.status == "error_8"){
+                //     alert("上传出错");
+                // } else if (msg.status == "error_9"){
+                //     alert("上传出错_2");
+                // } else if (msg.status == "success"){
+                //     alert("上传成功");
+                // } else {
+                //     alert("未知错误！");
+                // }
+            }
+        };
+
+        $("#regform").ajaxSubmit(options); //使用ajaxForm()插件提交
+
+    }
+</script>
+</body>
+</html>

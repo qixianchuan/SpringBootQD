@@ -10,6 +10,9 @@ import org.springframework.context.annotation.Bean;
 /**
  * 参考文章：
  * http://www.ityouknow.com/springboot/2018/01/12/spring-boot-upload-file.html
+ *
+ *	 jquery-form.js 实现图片和表单一同提交
+ * https://my.oschina.net/sprouting/blog/1359279
  * **/
 @SpringBootApplication
 public class FileuploadApplication {
