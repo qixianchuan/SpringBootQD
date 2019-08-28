@@ -5,6 +5,7 @@ import cn.hutool.core.io.FileUtil;
 import com.qi.richtexteditor.common.result.FileUploadErrorInfoEnum;
 import com.qi.richtexteditor.common.result.GlobalErrorInfoException;
 import com.qi.richtexteditor.common.result.UploadResultBody;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,7 +33,8 @@ import java.util.List;
 @Controller
 public class WangEditorController {
 
-    private static String UPLOADED_FOLDER = "E:\\temp\\";
+    @Value("${web.upload.path}")
+    private String UPLOADED_FOLDER;
 
     @GetMapping("/")
     public String index() {
@@ -64,7 +66,6 @@ public class WangEditorController {
         }
         for (MultipartFile file : list) {
             try {
-                byte[] bytes = file.getBytes();
                 String now = DateUtil.format(new Date(), "yyyyMMddHHmmss");
                 //为防止图片名称一样产生的覆盖问题,对图片重新命名
                 boolean exist = FileUtil.exist(UPLOADED_FOLDER);

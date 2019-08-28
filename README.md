@@ -10,6 +10,11 @@
 
 #### mybatisplus
 
+#### tymapper
+- 通用mapper 
+
+#### easypoi
+
 #### jpa
 
 #### scheduler
@@ -19,6 +24,7 @@
 #### swagger
 
 #### mongodb
+- qi-mongodb MongoTemplate 操作mongodb数据库 
 
 #### redis
 
@@ -48,3 +54,10 @@
 ```
 
 -  https://www.jianshu.com/p/3efa9225d012 这篇文章解决上面的那块代码是干啥的
+
+#### richtexteditor 
+- 富文本编辑器
+- a. wangEditor 国产
+- http://localhost:8080/getContent base64 格式图片
+- http://localhost:8080/uploadPicturesToServer 实现了图片上传，回显
+- b. Quill 外国 

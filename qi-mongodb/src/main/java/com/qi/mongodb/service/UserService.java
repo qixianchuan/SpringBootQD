@@ -5,7 +5,7 @@ import com.qi.mongodb.pojo.User;
 /**
  * @author ：qixianchuan
  * @date ：Created in 2019-08-21 16:51
- * @description：${description}
+ * @description：UserService interface
  * @modified By：
  * @version: $version$
  */
