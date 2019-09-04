@@ -1,0 +1,847 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qi.war.mapper.ChasesunEdiOrderReceiptMainMapper">
+  <resultMap id="BaseResultMap" type="com.qi.war.domain.ChasesunEdiOrderReceiptMain">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="uMainid" jdbcType="VARCHAR" property="umainid" />
+    <result column="tenantCode" jdbcType="VARCHAR" property="tenantcode" />
+    <result column="asnStatus" jdbcType="VARCHAR" property="asnstatus" />
+    <result column="asnNo" jdbcType="VARCHAR" property="asnno" />
+    <result column="verifyBy" jdbcType="VARCHAR" property="verifyby" />
+    <result column="shpd" jdbcType="VARCHAR" property="shpd" />
+    <result column="recheckBy" jdbcType="VARCHAR" property="recheckby" />
+    <result column="recheckTime" jdbcType="VARCHAR" property="rechecktime" />
+    <result column="receiveBy" jdbcType="VARCHAR" property="receiveby" />
+    <result column="finishReceiptTime" jdbcType="VARCHAR" property="finishreceipttime" />
+    <result column="asnType" jdbcType="VARCHAR" property="asntype" />
+    <result column="sourceSys" jdbcType="VARCHAR" property="sourcesys" />
+    <result column="warehouseId" jdbcType="VARCHAR" property="warehouseid" />
+    <result column="edi_status" jdbcType="INTEGER" property="ediStatus" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, uMainid, tenantCode, asnStatus, asnNo, verifyBy, shpd, recheckBy, recheckTime, 
+    receiveBy, finishReceiptTime, asnType, sourceSys, warehouseId, edi_status, create_by, 
+    create_date, update_by, update_date, `status`, remarks
+  </sql>
+  <select id="selectByExample" parameterType="com.qi.war.domain.ChasesunEdiOrderReceiptMainExample" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from edi.chasesun_edi_order_receipt_main
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from edi.chasesun_edi_order_receipt_main
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from edi.chasesun_edi_order_receipt_main
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qi.war.domain.ChasesunEdiOrderReceiptMainExample">
+    <!--@mbg.generated-->
+    delete from edi.chasesun_edi_order_receipt_main
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.qi.war.domain.ChasesunEdiOrderReceiptMain">
+    <!--@mbg.generated-->
+    insert into edi.chasesun_edi_order_receipt_main (id, uMainid, tenantCode, 
+      asnStatus, asnNo, verifyBy, 
+      shpd, recheckBy, recheckTime, 
+      receiveBy, finishReceiptTime, asnType, 
+      sourceSys, warehouseId, edi_status, 
+      create_by, create_date, update_by, 
+      update_date, `status`, remarks
+      )
+    values (#{id,jdbcType=VARCHAR}, #{umainid,jdbcType=VARCHAR}, #{tenantcode,jdbcType=VARCHAR}, 
+      #{asnstatus,jdbcType=VARCHAR}, #{asnno,jdbcType=VARCHAR}, #{verifyby,jdbcType=VARCHAR}, 
+      #{shpd,jdbcType=VARCHAR}, #{recheckby,jdbcType=VARCHAR}, #{rechecktime,jdbcType=VARCHAR}, 
+      #{receiveby,jdbcType=VARCHAR}, #{finishreceipttime,jdbcType=VARCHAR}, #{asntype,jdbcType=VARCHAR}, 
+      #{sourcesys,jdbcType=VARCHAR}, #{warehouseid,jdbcType=VARCHAR}, #{ediStatus,jdbcType=INTEGER}, 
+      #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qi.war.domain.ChasesunEdiOrderReceiptMain">
+    <!--@mbg.generated-->
+    insert into edi.chasesun_edi_order_receipt_main
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null and id != ''">
+        id,
+      </if>
+      <if test="umainid != null and umainid != ''">
+        uMainid,
+      </if>
+      <if test="tenantcode != null and tenantcode != ''">
+        tenantCode,
+      </if>
+      <if test="asnstatus != null and asnstatus != ''">
+        asnStatus,
+      </if>
+      <if test="asnno != null and asnno != ''">
+        asnNo,
+      </if>
+      <if test="verifyby != null and verifyby != ''">
+        verifyBy,
+      </if>
+      <if test="shpd != null and shpd != ''">
+        shpd,
+      </if>
+      <if test="recheckby != null and recheckby != ''">
+        recheckBy,
+      </if>
+      <if test="rechecktime != null and rechecktime != ''">
+        recheckTime,
+      </if>
+      <if test="receiveby != null and receiveby != ''">
+        receiveBy,
+      </if>
+      <if test="finishreceipttime != null and finishreceipttime != ''">
+        finishReceiptTime,
+      </if>
+      <if test="asntype != null and asntype != ''">
+        asnType,
+      </if>
+      <if test="sourcesys != null and sourcesys != ''">
+        sourceSys,
+      </if>
+      <if test="warehouseid != null and warehouseid != ''">
+        warehouseId,
+      </if>
+      <if test="ediStatus != null">
+        edi_status,
+      </if>
+      <if test="createBy != null and createBy != ''">
+        create_by,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateBy != null and updateBy != ''">
+        update_by,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="remarks != null and remarks != ''">
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null and id != ''">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="umainid != null and umainid != ''">
+        #{umainid,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantcode != null and tenantcode != ''">
+        #{tenantcode,jdbcType=VARCHAR},
+      </if>
+      <if test="asnstatus != null and asnstatus != ''">
+        #{asnstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="asnno != null and asnno != ''">
+        #{asnno,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyby != null and verifyby != ''">
+        #{verifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="shpd != null and shpd != ''">
+        #{shpd,jdbcType=VARCHAR},
+      </if>
+      <if test="recheckby != null and recheckby != ''">
+        #{recheckby,jdbcType=VARCHAR},
+      </if>
+      <if test="rechecktime != null and rechecktime != ''">
+        #{rechecktime,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveby != null and receiveby != ''">
+        #{receiveby,jdbcType=VARCHAR},
+      </if>
+      <if test="finishreceipttime != null and finishreceipttime != ''">
+        #{finishreceipttime,jdbcType=VARCHAR},
+      </if>
+      <if test="asntype != null and asntype != ''">
+        #{asntype,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcesys != null and sourcesys != ''">
+        #{sourcesys,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseid != null and warehouseid != ''">
+        #{warehouseid,jdbcType=VARCHAR},
+      </if>
+      <if test="ediStatus != null">
+        #{ediStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null and createBy != ''">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null and updateBy != ''">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null and remarks != ''">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qi.war.domain.ChasesunEdiOrderReceiptMainExample" resultType="java.lang.Long">
+    <!--@mbg.generated-->
+    select count(*) from edi.chasesun_edi_order_receipt_main
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--@mbg.generated-->
+    update edi.chasesun_edi_order_receipt_main
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.umainid != null">
+        uMainid = #{record.umainid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tenantcode != null">
+        tenantCode = #{record.tenantcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.asnstatus != null">
+        asnStatus = #{record.asnstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.asnno != null">
+        asnNo = #{record.asnno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.verifyby != null">
+        verifyBy = #{record.verifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shpd != null">
+        shpd = #{record.shpd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recheckby != null">
+        recheckBy = #{record.recheckby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rechecktime != null">
+        recheckTime = #{record.rechecktime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveby != null">
+        receiveBy = #{record.receiveby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.finishreceipttime != null">
+        finishReceiptTime = #{record.finishreceipttime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.asntype != null">
+        asnType = #{record.asntype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sourcesys != null">
+        sourceSys = #{record.sourcesys,jdbcType=VARCHAR},
+      </if>
+      <if test="record.warehouseid != null">
+        warehouseId = #{record.warehouseid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ediStatus != null">
+        edi_status = #{record.ediStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.createBy != null">
+        create_by = #{record.createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null">
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateBy != null">
+        update_by = #{record.updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateDate != null">
+        update_date = #{record.updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null">
+        `status` = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.remarks != null">
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--@mbg.generated-->
+    update edi.chasesun_edi_order_receipt_main
+    set id = #{record.id,jdbcType=VARCHAR},
+      uMainid = #{record.umainid,jdbcType=VARCHAR},
+      tenantCode = #{record.tenantcode,jdbcType=VARCHAR},
+      asnStatus = #{record.asnstatus,jdbcType=VARCHAR},
+      asnNo = #{record.asnno,jdbcType=VARCHAR},
+      verifyBy = #{record.verifyby,jdbcType=VARCHAR},
+      shpd = #{record.shpd,jdbcType=VARCHAR},
+      recheckBy = #{record.recheckby,jdbcType=VARCHAR},
+      recheckTime = #{record.rechecktime,jdbcType=VARCHAR},
+      receiveBy = #{record.receiveby,jdbcType=VARCHAR},
+      finishReceiptTime = #{record.finishreceipttime,jdbcType=VARCHAR},
+      asnType = #{record.asntype,jdbcType=VARCHAR},
+      sourceSys = #{record.sourcesys,jdbcType=VARCHAR},
+      warehouseId = #{record.warehouseid,jdbcType=VARCHAR},
+      edi_status = #{record.ediStatus,jdbcType=INTEGER},
+      create_by = #{record.createBy,jdbcType=VARCHAR},
+      create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      update_by = #{record.updateBy,jdbcType=VARCHAR},
+      update_date = #{record.updateDate,jdbcType=TIMESTAMP},
+      `status` = #{record.status,jdbcType=INTEGER},
+      remarks = #{record.remarks,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qi.war.domain.ChasesunEdiOrderReceiptMain">
+    <!--@mbg.generated-->
+    update edi.chasesun_edi_order_receipt_main
+    <set>
+      <if test="umainid != null and umainid != ''">
+        uMainid = #{umainid,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantcode != null and tenantcode != ''">
+        tenantCode = #{tenantcode,jdbcType=VARCHAR},
+      </if>
+      <if test="asnstatus != null and asnstatus != ''">
+        asnStatus = #{asnstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="asnno != null and asnno != ''">
+        asnNo = #{asnno,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyby != null and verifyby != ''">
+        verifyBy = #{verifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="shpd != null and shpd != ''">
+        shpd = #{shpd,jdbcType=VARCHAR},
+      </if>
+      <if test="recheckby != null and recheckby != ''">
+        recheckBy = #{recheckby,jdbcType=VARCHAR},
+      </if>
+      <if test="rechecktime != null and rechecktime != ''">
+        recheckTime = #{rechecktime,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveby != null and receiveby != ''">
+        receiveBy = #{receiveby,jdbcType=VARCHAR},
+      </if>
+      <if test="finishreceipttime != null and finishreceipttime != ''">
+        finishReceiptTime = #{finishreceipttime,jdbcType=VARCHAR},
+      </if>
+      <if test="asntype != null and asntype != ''">
+        asnType = #{asntype,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcesys != null and sourcesys != ''">
+        sourceSys = #{sourcesys,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseid != null and warehouseid != ''">
+        warehouseId = #{warehouseid,jdbcType=VARCHAR},
+      </if>
+      <if test="ediStatus != null">
+        edi_status = #{ediStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null and createBy != ''">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null and updateBy != ''">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null and remarks != ''">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qi.war.domain.ChasesunEdiOrderReceiptMain">
+    <!--@mbg.generated-->
+    update edi.chasesun_edi_order_receipt_main
+    set uMainid = #{umainid,jdbcType=VARCHAR},
+      tenantCode = #{tenantcode,jdbcType=VARCHAR},
+      asnStatus = #{asnstatus,jdbcType=VARCHAR},
+      asnNo = #{asnno,jdbcType=VARCHAR},
+      verifyBy = #{verifyby,jdbcType=VARCHAR},
+      shpd = #{shpd,jdbcType=VARCHAR},
+      recheckBy = #{recheckby,jdbcType=VARCHAR},
+      recheckTime = #{rechecktime,jdbcType=VARCHAR},
+      receiveBy = #{receiveby,jdbcType=VARCHAR},
+      finishReceiptTime = #{finishreceipttime,jdbcType=VARCHAR},
+      asnType = #{asntype,jdbcType=VARCHAR},
+      sourceSys = #{sourcesys,jdbcType=VARCHAR},
+      warehouseId = #{warehouseid,jdbcType=VARCHAR},
+      edi_status = #{ediStatus,jdbcType=INTEGER},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      `status` = #{status,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update edi.chasesun_edi_order_receipt_main
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="uMainid = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.umainid,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="tenantCode = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.tenantcode,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="asnStatus = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.asnstatus,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="asnNo = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.asnno,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="verifyBy = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.verifyby,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="shpd = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.shpd,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="recheckBy = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.recheckby,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="recheckTime = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.rechecktime,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="receiveBy = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.receiveby,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="finishReceiptTime = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.finishreceipttime,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="asnType = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.asntype,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="sourceSys = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.sourcesys,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="warehouseId = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.warehouseid,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="edi_status = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.ediStatus,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="create_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.createBy,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="create_date = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.createDate,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="update_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.updateBy,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="update_date = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.updateDate,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.status,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="remarks = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.remarks,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into edi.chasesun_edi_order_receipt_main
+    (id, uMainid, tenantCode, asnStatus, asnNo, verifyBy, shpd, recheckBy, recheckTime, 
+      receiveBy, finishReceiptTime, asnType, sourceSys, warehouseId, edi_status, create_by, 
+      create_date, update_by, update_date, `status`, remarks)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=VARCHAR}, #{item.umainid,jdbcType=VARCHAR}, #{item.tenantcode,jdbcType=VARCHAR}, 
+        #{item.asnstatus,jdbcType=VARCHAR}, #{item.asnno,jdbcType=VARCHAR}, #{item.verifyby,jdbcType=VARCHAR}, 
+        #{item.shpd,jdbcType=VARCHAR}, #{item.recheckby,jdbcType=VARCHAR}, #{item.rechecktime,jdbcType=VARCHAR}, 
+        #{item.receiveby,jdbcType=VARCHAR}, #{item.finishreceipttime,jdbcType=VARCHAR}, 
+        #{item.asntype,jdbcType=VARCHAR}, #{item.sourcesys,jdbcType=VARCHAR}, #{item.warehouseid,jdbcType=VARCHAR}, 
+        #{item.ediStatus,jdbcType=INTEGER}, #{item.createBy,jdbcType=VARCHAR}, #{item.createDate,jdbcType=TIMESTAMP}, 
+        #{item.updateBy,jdbcType=VARCHAR}, #{item.updateDate,jdbcType=TIMESTAMP}, #{item.status,jdbcType=INTEGER}, 
+        #{item.remarks,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" parameterType="com.qi.war.domain.ChasesunEdiOrderReceiptMain">
+    <!--@mbg.generated-->
+    insert into edi.chasesun_edi_order_receipt_main
+    (id, uMainid, tenantCode, asnStatus, asnNo, verifyBy, shpd, recheckBy, recheckTime, 
+      receiveBy, finishReceiptTime, asnType, sourceSys, warehouseId, edi_status, create_by, 
+      create_date, update_by, update_date, `status`, remarks)
+    values
+    (#{id,jdbcType=VARCHAR}, #{umainid,jdbcType=VARCHAR}, #{tenantcode,jdbcType=VARCHAR}, 
+      #{asnstatus,jdbcType=VARCHAR}, #{asnno,jdbcType=VARCHAR}, #{verifyby,jdbcType=VARCHAR}, 
+      #{shpd,jdbcType=VARCHAR}, #{recheckby,jdbcType=VARCHAR}, #{rechecktime,jdbcType=VARCHAR}, 
+      #{receiveby,jdbcType=VARCHAR}, #{finishreceipttime,jdbcType=VARCHAR}, #{asntype,jdbcType=VARCHAR}, 
+      #{sourcesys,jdbcType=VARCHAR}, #{warehouseid,jdbcType=VARCHAR}, #{ediStatus,jdbcType=INTEGER}, 
+      #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}
+      )
+    on duplicate key update 
+    id = #{id,jdbcType=VARCHAR}, 
+    uMainid = #{umainid,jdbcType=VARCHAR}, 
+    tenantCode = #{tenantcode,jdbcType=VARCHAR}, 
+    asnStatus = #{asnstatus,jdbcType=VARCHAR}, 
+    asnNo = #{asnno,jdbcType=VARCHAR}, 
+    verifyBy = #{verifyby,jdbcType=VARCHAR}, 
+    shpd = #{shpd,jdbcType=VARCHAR}, 
+    recheckBy = #{recheckby,jdbcType=VARCHAR}, 
+    recheckTime = #{rechecktime,jdbcType=VARCHAR}, 
+    receiveBy = #{receiveby,jdbcType=VARCHAR}, 
+    finishReceiptTime = #{finishreceipttime,jdbcType=VARCHAR}, 
+    asnType = #{asntype,jdbcType=VARCHAR}, 
+    sourceSys = #{sourcesys,jdbcType=VARCHAR}, 
+    warehouseId = #{warehouseid,jdbcType=VARCHAR}, 
+    edi_status = #{ediStatus,jdbcType=INTEGER}, 
+    create_by = #{createBy,jdbcType=VARCHAR}, 
+    create_date = #{createDate,jdbcType=TIMESTAMP}, 
+    update_by = #{updateBy,jdbcType=VARCHAR}, 
+    update_date = #{updateDate,jdbcType=TIMESTAMP}, 
+    `status` = #{status,jdbcType=INTEGER}, 
+    remarks = #{remarks,jdbcType=VARCHAR}
+  </insert>
+  <insert id="insertOrUpdateSelective" parameterType="com.qi.war.domain.ChasesunEdiOrderReceiptMain">
+    <!--@mbg.generated-->
+    insert into edi.chasesun_edi_order_receipt_main
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="umainid != null">
+        uMainid,
+      </if>
+      <if test="tenantcode != null">
+        tenantCode,
+      </if>
+      <if test="asnstatus != null">
+        asnStatus,
+      </if>
+      <if test="asnno != null">
+        asnNo,
+      </if>
+      <if test="verifyby != null">
+        verifyBy,
+      </if>
+      <if test="shpd != null">
+        shpd,
+      </if>
+      <if test="recheckby != null">
+        recheckBy,
+      </if>
+      <if test="rechecktime != null">
+        recheckTime,
+      </if>
+      <if test="receiveby != null">
+        receiveBy,
+      </if>
+      <if test="finishreceipttime != null">
+        finishReceiptTime,
+      </if>
+      <if test="asntype != null">
+        asnType,
+      </if>
+      <if test="sourcesys != null">
+        sourceSys,
+      </if>
+      <if test="warehouseid != null">
+        warehouseId,
+      </if>
+      <if test="ediStatus != null">
+        edi_status,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="umainid != null">
+        #{umainid,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantcode != null">
+        #{tenantcode,jdbcType=VARCHAR},
+      </if>
+      <if test="asnstatus != null">
+        #{asnstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="asnno != null">
+        #{asnno,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyby != null">
+        #{verifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="shpd != null">
+        #{shpd,jdbcType=VARCHAR},
+      </if>
+      <if test="recheckby != null">
+        #{recheckby,jdbcType=VARCHAR},
+      </if>
+      <if test="rechecktime != null">
+        #{rechecktime,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveby != null">
+        #{receiveby,jdbcType=VARCHAR},
+      </if>
+      <if test="finishreceipttime != null">
+        #{finishreceipttime,jdbcType=VARCHAR},
+      </if>
+      <if test="asntype != null">
+        #{asntype,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcesys != null">
+        #{sourcesys,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseid != null">
+        #{warehouseid,jdbcType=VARCHAR},
+      </if>
+      <if test="ediStatus != null">
+        #{ediStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="umainid != null">
+        uMainid = #{umainid,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantcode != null">
+        tenantCode = #{tenantcode,jdbcType=VARCHAR},
+      </if>
+      <if test="asnstatus != null">
+        asnStatus = #{asnstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="asnno != null">
+        asnNo = #{asnno,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyby != null">
+        verifyBy = #{verifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="shpd != null">
+        shpd = #{shpd,jdbcType=VARCHAR},
+      </if>
+      <if test="recheckby != null">
+        recheckBy = #{recheckby,jdbcType=VARCHAR},
+      </if>
+      <if test="rechecktime != null">
+        recheckTime = #{rechecktime,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveby != null">
+        receiveBy = #{receiveby,jdbcType=VARCHAR},
+      </if>
+      <if test="finishreceipttime != null">
+        finishReceiptTime = #{finishreceipttime,jdbcType=VARCHAR},
+      </if>
+      <if test="asntype != null">
+        asnType = #{asntype,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcesys != null">
+        sourceSys = #{sourcesys,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseid != null">
+        warehouseId = #{warehouseid,jdbcType=VARCHAR},
+      </if>
+      <if test="ediStatus != null">
+        edi_status = #{ediStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

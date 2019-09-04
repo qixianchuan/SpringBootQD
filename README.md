@@ -12,6 +12,8 @@
 
 #### tymapper
 - 通用mapper 
+- 文档： https://mapperhelper.github.io/docs/
+- github: https://github.com/abel533/Mapper
 
 #### easypoi
 

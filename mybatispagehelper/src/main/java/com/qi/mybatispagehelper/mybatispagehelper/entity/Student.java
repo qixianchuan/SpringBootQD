@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 /**
  * @author ：qixianchuan
  * @date ：Created in 2019-08-15 13:28
- * @description：${description}
+ * @description：Student entity
  * @modified By：
  * @version: $version$
  */
