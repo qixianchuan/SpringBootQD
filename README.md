@@ -57,6 +57,8 @@
 
 -  https://www.jianshu.com/p/3efa9225d012 这篇文章解决上面的那块代码是干啥的
 
+- 4. http://localhost:8080/download 下载文件 相关 DownloadController
+
 #### richtexteditor 
 - 富文本编辑器
 - a. wangEditor 国产
